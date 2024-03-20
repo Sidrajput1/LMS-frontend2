@@ -35,7 +35,7 @@ const Homepage = () => {
 
         {/* right section for image */}
         <div className="w-1/2 flex items-center justify-center">
-          <img src={homePageMainImage} alt="home page image" />
+          <img src={homePageMainImage} alt="home page"/>
         </div>
       </div>
     </Layout>

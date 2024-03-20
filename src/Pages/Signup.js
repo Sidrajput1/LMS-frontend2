@@ -77,7 +77,6 @@ const Signup = () => {
       toast.error("Invalid email id");
       return;
     }
-
     // password validation using regex
     if (!signupData.password.match(/^(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,20}$/)) {
       toast.error(
@@ -124,7 +123,7 @@ const Signup = () => {
               <img
                 className="w-24 h-24 rounded-full m-auto"
                 src={previewImage}
-                alt="preview image"
+                alt="Preview"
               />
             ) : (
               <BsPersonCircle className="w-24 h-24 rounded-full m-auto" />

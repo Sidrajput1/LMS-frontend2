@@ -7,7 +7,7 @@ import { forgetPassword } from "../../Redux/authSlice";
 
 const ForgetPassword = () => {
   const dispatch = useDispatch();
-  const navigate = useNavigate();
+  //const navigate = useNavigate();
 
   const [email, setEmail] = useState("");
 
@@ -22,13 +22,18 @@ const ForgetPassword = () => {
     }
 
     // email validation using regex
+    // if (!email.match(/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/)) {
+    //   toast.error("Invalid email id");
+    //   return;
+    // }
     if (!email.match(/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/)) {
       toast.error("Invalid email id");
       return;
     }
 
     // calling the api from auth slice
-    const res = await dispatch(forgetPassword(email));
+    //const res = await dispatch(forgetPassword(email));
+    await dispatch(forgetPassword(email));
 
     // clearing the input fields
     setEmail("");
@@ -38,7 +43,7 @@ const ForgetPassword = () => {
     <Layout>
       {/* forget password container */}
       <div className="flex items-center justify-center h-[100vh]">
-        {/* forget password card */}
+        
         <form
           onSubmit={handleFormSubmit}
           className="flex flex-col justify-center gap-6 rounded-lg p-4 text-white w-80 h-[26rem] shadow-[0_0_10px_black]"

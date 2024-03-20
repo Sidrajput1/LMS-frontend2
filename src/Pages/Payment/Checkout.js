@@ -49,7 +49,8 @@ const Checkout = () => {
         toast.success("Payment Successfull");
 
         // verifying the payment
-        const res = await dispatch(verifyUserPayment(paymentDetails));
+        //const res = await dispatch(verifyUserPayment(paymentDetails));
+        await dispatch(verifyUserPayment(paymentDetails));
 
         // redirecting the user according to the verification status
         !isPaymentVerified
@@ -68,12 +69,26 @@ const Checkout = () => {
     paymentObject.open();
   };
 
+  // useEffect(() => {
+  //   (async () => {
+  //     await dispatch(getRazorPayId());
+  //     await dispatch(purchaseCourseBundle());
+  //   })();
+  // }, []);
+
   useEffect(() => {
-    (async () => {
-      await dispatch(getRazorPayId());
-      await dispatch(purchaseCourseBundle());
-    })();
-  }, []);
+    const fetchData = async () => {
+      try {
+        await dispatch(getRazorPayId());
+        await dispatch(purchaseCourseBundle());
+      } catch (error) {
+        console.error("Error while dispatching actions:", error);
+      }
+    };
+  
+    fetchData();
+  }, [dispatch]);
+  
 
   return (
     <Layout>
